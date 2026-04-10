@@ -200,25 +200,22 @@ function Scene({
 
   return (
     <>
-      {/* Lighting — warm garage with cool tech accents */}
-      <ambientLight intensity={0.15} />
-      <directionalLight position={[5, 15, 8]} intensity={0.6} color="#fef3c7" castShadow />
-      <pointLight position={[4, 3, 0]} intensity={0.5} color="#06b6d4" distance={30} />
-      <pointLight position={[-6, 6, -4]} intensity={0.3} color="#8b5cf6" distance={25} />
-      <pointLight position={[12, 1, 6]} intensity={0.2} color="#f59e0b" distance={20} />
+      {/* Lighting — dim garage with cool tech accents */}
+      <ambientLight intensity={0.08} />
+      <directionalLight position={[5, 15, 8]} intensity={0.3} color="#fef3c7" />
+      <pointLight position={[4, 3, 0]} intensity={0.3} color="#06b6d4" distance={30} />
+      <pointLight position={[-6, 6, -4]} intensity={0.15} color="#8b5cf6" distance={25} />
 
-      {/* Subtle depth fog — pushed far back so garage stays visible */}
-      <fog attach="fog" args={["#0a0c14", 50, 120]} />
+      {/* Depth fog */}
+      <fog attach="fog" args={["#0a0c14", 55, 130]} />
 
-      {/* 2K HDRI — industrial workshop foundry (Poly Haven)
-          Glossy floors, metal highlights, warm skylight + cool lamps.
-          Tony Stark garage vibe. */}
+      {/* 2K HDRI — industrial workshop foundry (Poly Haven) */}
       <Environment
         files="https://dl.polyhaven.org/file/ph-assets/HDRIs/hdr/2k/industrial_workshop_foundry_2k.hdr"
         background
-        backgroundBlurriness={0.3}
-        backgroundIntensity={0.55}
-        environmentIntensity={0.7}
+        backgroundBlurriness={0.05}
+        backgroundIntensity={0.25}
+        environmentIntensity={0.35}
       />
 
       {/* Holographic structure overlaid on the garage */}
@@ -252,12 +249,12 @@ function Scene({
       {/* Post-processing — bloom + vignette only */}
       <EffectComposer>
         <Bloom
-          intensity={1.2}
-          luminanceThreshold={0.15}
+          intensity={0.5}
+          luminanceThreshold={0.4}
           luminanceSmoothing={0.9}
           mipmapBlur
         />
-        <Vignette eskil={false} offset={0.15} darkness={0.65} />
+        <Vignette eskil={false} offset={0.1} darkness={0.5} />
       </EffectComposer>
 
       {/* Camera controls — user-driven orbit */}
