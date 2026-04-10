@@ -1,0 +1,145 @@
+.whyBox {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-accent);
+  border-left: 3px solid var(--accent-warm);
+  border-radius: 8px;
+  padding: 28px;
+  margin: 40px 0 48px;
+}
+
+.whyTitle {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--accent-warm);
+  margin-bottom: 12px;
+}
+
+.whyText {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+}
+
+.subhead {
+  font-family: var(--font-mono);
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 24px;
+}
+
+.stepGrid {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 48px;
+}
+
+.stepCard {
+  display: grid;
+  grid-template-columns: 48px 140px 1fr;
+  align-items: start;
+  gap: 16px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 24px;
+}
+
+.stepNum {
+  font-family: var(--font-mono);
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--accent-dim);
+  line-height: 1;
+}
+
+.stepTitle {
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  padding-top: 4px;
+}
+
+.stepDesc {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.implGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 16px;
+  margin-bottom: 48px;
+}
+
+.implCard {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 28px;
+  transition: border-color 0.3s;
+}
+
+.implCard:hover {
+  border-color: var(--border-accent);
+}
+
+.implCard:nth-child(3) {
+  border-color: rgba(239, 68, 68, 0.2);
+}
+
+.implCard:nth-child(3):hover {
+  border-color: rgba(239, 68, 68, 0.4);
+}
+
+.implTitle {
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 10px;
+}
+
+.implDesc {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  line-height: 1.65;
+}
+
+/* ── Bridge / Concept D ── */
+.bridgeText {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  margin-bottom: 24px;
+}
+
+.bridgeBox {
+  margin: 40px 0;
+  padding: 24px 0;
+  border-top: 1px solid var(--border);
+}
+
+.quoteBox {
+  text-align: center;
+  padding: 40px 24px;
+}
+
+.quoteText {
+  font-family: var(--font-mono);
+  font-size: 1.2rem;
+  color: var(--text-primary);
+  font-weight: 600;
+  font-style: italic;
+}
+
+@media (max-width: 768px) {
+  .stepCard {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+}

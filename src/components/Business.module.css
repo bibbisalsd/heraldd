@@ -1,0 +1,113 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 16px;
+  margin: 40px 0 48px;
+}
+
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 28px;
+}
+
+.metric {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--accent-warm);
+  background: rgba(245, 158, 66, 0.08);
+  padding: 3px 10px;
+  border-radius: 4px;
+  margin-bottom: 14px;
+}
+
+.title {
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 10px;
+  line-height: 1.35;
+}
+
+.desc {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.closingBox {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-accent);
+  border-radius: 10px;
+  padding: 40px;
+}
+
+.closingTitle {
+  font-family: var(--font-mono);
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 16px;
+}
+
+.closingText {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  line-height: 1.75;
+  max-width: 740px;
+}
+
+.closingCta {
+  display: flex;
+  gap: 16px;
+  margin-top: 28px;
+}
+
+.closingBtn {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  padding: 12px 28px;
+  background: var(--accent);
+  color: #fff;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.closingBtn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 24px rgba(79, 143, 247, 0.35);
+  text-decoration: none;
+}
+
+.closingBtnSecondary {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  padding: 12px 28px;
+  background: transparent;
+  color: var(--text-secondary);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: border-color 0.2s, color 0.2s, transform 0.2s;
+}
+
+.closingBtnSecondary:hover {
+  border-color: var(--text-muted);
+  color: var(--text-primary);
+  transform: translateY(-1px);
+  text-decoration: none;
+}
+
+@media (max-width: 600px) {
+  .closingCta {
+    flex-direction: column;
+  }
+}

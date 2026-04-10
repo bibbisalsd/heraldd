@@ -1,0 +1,291 @@
+/* ── Race container ── */
+.raceContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  margin: 48px 0 40px;
+}
+
+/* ── Single lane ── */
+.lane {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 24px 28px 20px;
+  transition: border-color 0.3s;
+}
+
+.lane:hover {
+  border-color: var(--border-accent);
+}
+
+.laneHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.laneLabel {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.laneDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.laneTimer {
+  font-family: var(--font-mono);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: color 0.3s;
+  min-width: 100px;
+  justify-content: flex-end;
+}
+
+.laneTimerDone {
+  color: var(--text-primary);
+}
+
+.doneBadge {
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--accent-green);
+  background: rgba(34, 197, 94, 0.12);
+  border: 1px solid rgba(34, 197, 94, 0.3);
+  padding: 2px 8px;
+  border-radius: 4px;
+  animation: popIn 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ── Progress bar ── */
+.bar {
+  display: flex;
+  height: 36px;
+  border-radius: 6px;
+  overflow: hidden;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  position: relative;
+}
+
+.segment {
+  position: relative;
+  height: 100%;
+  border-right: 1px solid rgba(255, 255, 255, 0.04);
+  overflow: hidden;
+}
+
+.segment:last-child {
+  border-right: none;
+}
+
+.segFill {
+  position: absolute;
+  inset: 0;
+  transition: width 0.08s linear;
+}
+
+/* Segment type colors */
+.seg_neutral .segFill {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.seg_llm .segFill {
+  background: rgba(239, 68, 68, 0.2);
+}
+
+.seg_code .segFill {
+  background: rgba(79, 143, 247, 0.2);
+}
+
+.seg_render .segFill {
+  background: rgba(245, 158, 66, 0.2);
+}
+
+/* Active glow */
+.seg_llm.segActive {
+  box-shadow: inset 0 0 20px rgba(239, 68, 68, 0.15);
+}
+
+.seg_code.segActive {
+  box-shadow: inset 0 0 20px rgba(79, 143, 247, 0.15);
+}
+
+.seg_render.segActive {
+  box-shadow: inset 0 0 20px rgba(245, 158, 66, 0.15);
+}
+
+/* Traveling pulse dot */
+.pulseDot {
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  z-index: 2;
+  transition: left 0.08s linear;
+}
+
+/* ── Step labels ── */
+.segLabels {
+  display: flex;
+  margin-top: 8px;
+}
+
+.segLabel {
+  font-family: var(--font-mono);
+  font-size: 0.58rem;
+  color: var(--text-muted);
+  text-align: center;
+  opacity: 0.35;
+  transition: opacity 0.3s, color 0.3s;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  padding: 0 2px;
+}
+
+.segLabelActive {
+  opacity: 1;
+  color: var(--text-secondary);
+}
+
+/* ── Summary row ── */
+.summaryRow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  margin-bottom: 32px;
+}
+
+.summaryCard {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 20px 32px;
+  text-align: center;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.summaryCard:hover {
+  border-color: var(--border-accent);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
+}
+
+.summaryValue {
+  font-family: var(--font-mono);
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+}
+
+.summaryBad {
+  color: var(--accent-red);
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+
+.summaryGood {
+  color: var(--accent-green);
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+
+.summaryLabel {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--text-muted);
+}
+
+.summaryVs {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  color: var(--text-muted);
+}
+
+/* ── Key constraint box ── */
+.keyPoint {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-accent);
+  border-left: 3px solid var(--accent);
+  border-radius: 8px;
+  padding: 28px;
+  transition: box-shadow 0.3s;
+}
+
+.keyPoint:hover {
+  box-shadow: 0 0 30px rgba(79, 143, 247, 0.06);
+}
+
+.keyLabel {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 12px;
+}
+
+.keyText {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+}
+
+.keyText strong {
+  color: var(--text-primary);
+}
+
+/* ── Animations ── */
+@keyframes popIn {
+  from {
+    opacity: 0;
+    transform: scale(0.7);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* ── Mobile ── */
+@media (max-width: 768px) {
+  .raceContainer {
+    gap: 24px;
+  }
+  .lane {
+    padding: 18px 16px 14px;
+  }
+  .bar {
+    height: 28px;
+  }
+  .segLabel {
+    font-size: 0.5rem;
+  }
+  .summaryRow {
+    flex-direction: column;
+    gap: 12px;
+  }
+  .summaryVs {
+    display: none;
+  }
+}

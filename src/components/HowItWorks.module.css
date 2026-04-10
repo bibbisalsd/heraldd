@@ -1,0 +1,492 @@
+.exploreLink {
+  text-decoration: none;
+  display: block;
+  margin-bottom: 48px;
+}
+
+.exploreLink:hover {
+  text-decoration: none;
+}
+
+.exploreBanner {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 24px 28px;
+  background: linear-gradient(135deg, rgba(79, 143, 247, 0.08), rgba(245, 158, 66, 0.06));
+  border: 1px solid var(--border-accent);
+  border-radius: 10px;
+  transition: border-color 0.3s, background 0.3s;
+}
+
+.exploreLink:hover .exploreBanner {
+  border-color: var(--accent);
+  background: linear-gradient(135deg, rgba(79, 143, 247, 0.12), rgba(245, 158, 66, 0.08));
+}
+
+.exploreIcon {
+  font-size: 1.8rem;
+  color: var(--accent);
+  flex-shrink: 0;
+}
+
+.exploreTitle {
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+}
+
+.exploreDesc {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+}
+
+.exploreArrow {
+  font-size: 1.3rem;
+  color: var(--text-muted);
+  margin-left: auto;
+  flex-shrink: 0;
+  transition: color 0.2s, transform 0.2s;
+}
+
+.exploreLink:hover .exploreArrow {
+  color: var(--accent);
+  transform: translateX(4px);
+}
+
+.subhead {
+  font-family: var(--font-mono);
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 56px 0 20px;
+}
+
+/* ── Pipeline Diagram ── */
+.diagram {
+  display: flex;
+  align-items: flex-start;
+  gap: 0;
+  margin: 32px 0 24px;
+  overflow-x: auto;
+  padding: 16px 0;
+}
+
+.diagramStep {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.diagramNode {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 18px;
+  background: var(--bg-card);
+  border: 2px solid var(--border);
+  border-radius: 28px;
+  transition: border-color 0.4s, box-shadow 0.4s, background 0.4s;
+  white-space: nowrap;
+}
+
+.diagramNodeActive {
+  background: var(--bg-secondary);
+}
+
+.diagramNodeDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--text-muted);
+  transition: background 0.4s;
+  flex-shrink: 0;
+}
+
+.diagramNodeLabel {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.diagramDesc {
+  font-size: 0.68rem;
+  color: var(--text-muted);
+  text-align: center;
+  margin-top: 8px;
+  max-width: 130px;
+  opacity: 0;
+  transform: translateY(-4px);
+  transition: opacity 0.3s, transform 0.3s;
+  line-height: 1.4;
+}
+
+.diagramDescActive {
+  opacity: 1;
+  transform: translateY(0);
+  color: var(--text-secondary);
+}
+
+.diagramConnector {
+  display: flex;
+  align-items: center;
+  position: relative;
+  width: 40px;
+  height: 44px;
+  align-self: flex-start;
+  margin-top: 12px;
+}
+
+.connectorLine {
+  width: 100%;
+  height: 2px;
+  background: var(--border);
+  transform-origin: left;
+  transition: background 0.4s;
+}
+
+.connectorActive {
+  background: var(--accent);
+}
+
+.connectorDot {
+  position: absolute;
+  right: -3px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  animation: connectorPulse 0.6s ease-out;
+}
+
+@keyframes connectorPulse {
+  from {
+    opacity: 0;
+    transform: translateY(-50%) scale(0);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(-50%) scale(1);
+  }
+}
+
+/* ── Query Playground ── */
+.playground {
+  margin: 24px 0 40px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 28px;
+  transition: border-color 0.3s;
+}
+
+.playground:hover {
+  border-color: var(--border-accent);
+}
+
+.pgTerminal {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 16px 20px;
+  margin-bottom: 16px;
+}
+
+.pgPrompt {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.pgCaret {
+  font-family: var(--font-mono);
+  font-size: 1rem;
+  color: var(--accent);
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.pgInput {
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+  color: var(--text-primary);
+  background: transparent;
+  border: none;
+  outline: none;
+  width: 100%;
+  caret-color: var(--accent);
+}
+
+.pgInput::placeholder {
+  color: var(--text-muted);
+}
+
+.pgChips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.pgChip {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  padding: 6px 14px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: border-color 0.2s, color 0.2s, background 0.2s;
+}
+
+.pgChip:hover {
+  border-color: var(--border-accent);
+  color: var(--text-secondary);
+}
+
+.pgChipActive {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: var(--accent-glow);
+}
+
+.pgResult {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.pgResultRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.pgResultRow:last-child {
+  border-bottom: none;
+}
+
+.pgResultLabel {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.pgResultValue {
+  font-family: var(--font-mono);
+  font-size: 0.88rem;
+  font-weight: 600;
+}
+
+.pgResultMono {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+.pgGood {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--accent-green);
+}
+
+.pgBad {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--accent-red);
+}
+
+.pgEmpty {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  text-align: center;
+  padding: 16px 0;
+}
+
+.tierGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 14px;
+  margin: 24px 0;
+}
+
+.tierCard {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 24px;
+}
+
+.tierHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.tierName {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.tierComplexity {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--accent);
+  background: var(--accent-glow);
+  padding: 3px 8px;
+  border-radius: 4px;
+}
+
+.tierDesc {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.degradedBox {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-accent);
+  border-left: 3px solid var(--accent-green);
+  border-radius: 8px;
+  padding: 28px;
+  margin-top: 40px;
+}
+
+.degradedLabel {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--accent-green);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 12px;
+}
+
+.degradedText {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+}
+
+/* ── Mobile ── */
+@media (max-width: 768px) {
+  .diagram {
+    gap: 0;
+    padding: 12px 0;
+  }
+  .diagramNode {
+    padding: 8px 12px;
+    gap: 6px;
+  }
+  .diagramNodeLabel {
+    font-size: 0.65rem;
+  }
+  .diagramDesc {
+    font-size: 0.58rem;
+    max-width: 90px;
+  }
+  .diagramConnector {
+    width: 24px;
+  }
+  .playground {
+    padding: 18px;
+  }
+  .pgChip {
+    font-size: 0.65rem;
+    padding: 5px 10px;
+  }
+  .tierGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ── BG1 Streaming Mockup ── */
+.bg1Terminal {
+  background: #0d1117;
+  border: 1px solid #30363d;
+  border-radius: 8px;
+  overflow: hidden;
+  margin: 24px 0;
+  font-family: var(--font-mono);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.bg1Header {
+  background: #161b22;
+  padding: 10px 16px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  border-bottom: 1px solid #30363d;
+}
+
+.bg1Dots {
+  display: flex;
+  gap: 6px;
+}
+
+.bg1Dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.bg1Dot:nth-child(1) { background: #ff5f56; }
+.bg1Dot:nth-child(2) { background: #ffbd2e; }
+.bg1Dot:nth-child(3) { background: #27c93f; }
+
+.bg1Title {
+  font-size: 0.75rem;
+  color: #8b949e;
+  font-weight: 500;
+}
+
+.bg1Content {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.bg1Line {
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: #c9d1d9;
+}
+
+.bg1System {
+  color: #58a6ff;
+  font-weight: 600;
+  margin-right: 8px;
+}
+
+.bg1Thinking {
+  font-size: 0.8rem;
+  color: #8b949e;
+  background: rgba(139, 148, 158, 0.05);
+  padding: 12px;
+  border-left: 2px solid #30363d;
+  white-space: pre-wrap;
+  line-height: 1.6;
+  font-style: italic;
+}
+
+.bg1Output {
+  color: #aff5b4;
+}

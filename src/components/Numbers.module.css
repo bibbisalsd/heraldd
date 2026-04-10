@@ -1,0 +1,176 @@
+.statGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 16px;
+  margin: 40px 0 56px;
+}
+
+.statCard {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 28px;
+  position: relative;
+  overflow: hidden;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.statCard::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 8px;
+  padding: 1px;
+  background: linear-gradient(135deg, transparent 40%, var(--accent) 100%);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.statCard:hover::before {
+  opacity: 1;
+}
+
+.statCard:hover {
+  box-shadow: 0 4px 32px rgba(79, 143, 247, 0.08);
+}
+
+.statValue {
+  font-family: var(--font-mono);
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--accent);
+  margin-bottom: 4px;
+  line-height: 1;
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  /* Loading dash fades in when JS runs */
+  transition: color 0.4s ease;
+}
+
+.statSuffix {
+  font-size: 1.2rem;
+  font-weight: 500;
+  opacity: 0.7;
+}
+
+/* Zero stat: shown in green to signal "this is the goal, not a bug" */
+.statValueZero {
+  color: var(--accent-green);
+}
+
+/* Pulse ring that appears when zero is confirmed */
+.statValueZeroConfirmed {
+  animation: zeroPulse 0.6s ease forwards;
+}
+
+@keyframes zeroPulse {
+  0% { transform: scale(1); }
+  40% { transform: scale(1.06); }
+  100% { transform: scale(1); }
+}
+
+/* Checkmark confirming the zero is intentional */
+.zeroCheck {
+  font-size: 1rem;
+  color: var(--accent-green);
+  opacity: 0;
+  transform: scale(0.5) translateY(2px);
+  transition: opacity 0.35s ease, transform 0.35s ease;
+  display: inline-block;
+}
+
+.zeroCheckVisible {
+  opacity: 1;
+  transform: scale(1) translateY(0);
+}
+
+.statLabel {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  margin-bottom: 10px;
+}
+
+.statDesc {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  line-height: 1.55;
+}
+
+.subhead {
+  font-family: var(--font-mono);
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 20px;
+}
+
+.tableWrap {
+  overflow-x: auto;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.88rem;
+}
+
+.table th {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+  text-align: left;
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--border);
+  font-weight: 500;
+}
+
+.table td {
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--border);
+  color: var(--text-secondary);
+  vertical-align: middle;
+}
+
+.table tr {
+  transition: background 0.15s;
+}
+
+.table tr:hover {
+  background: rgba(79, 143, 247, 0.03);
+}
+
+.queryCell {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  color: var(--text-primary) !important;
+}
+
+.slowCell {
+  color: var(--accent-red) !important;
+}
+
+.fastCell {
+  color: var(--accent-green) !important;
+  font-weight: 600;
+}
+
+.factorCell {
+  font-family: var(--font-mono);
+  color: var(--accent) !important;
+  font-weight: 600;
+}
+
+.note {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-top: 20px;
+  font-style: italic;
+}

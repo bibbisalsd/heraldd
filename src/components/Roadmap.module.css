@@ -1,0 +1,486 @@
+/* ── Stats row (matches Jarvis.module.css pattern) ── */
+.statRow {
+  display: flex;
+  gap: 32px;
+  margin: 40px 0;
+  flex-wrap: wrap;
+}
+
+.stat {
+  text-align: center;
+}
+
+.statValue {
+  font-family: var(--font-mono);
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1;
+}
+
+.statLabel {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-top: 6px;
+}
+
+/* ── Subheadings ── */
+.subhead {
+  font-family: var(--font-mono);
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 24px;
+}
+
+/* ── Completed tasks grid ── */
+.completedGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 12px;
+  margin-bottom: 48px;
+}
+
+.completedCard {
+  display: grid;
+  grid-template-columns: 48px 1fr;
+  gap: 16px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--accent-green);
+  border-radius: 8px;
+  padding: 20px;
+  transition: border-color 0.3s, transform 0.3s;
+}
+
+.completedCard:hover {
+  border-color: var(--accent-green);
+  transform: translateY(-2px);
+}
+
+/* ── Dependency graph box ── */
+.depBox {
+  background: var(--bg-code);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 32px;
+  margin-bottom: 48px;
+  overflow-x: auto;
+  transition: border-color 0.3s;
+}
+
+.depBox:hover {
+  border-color: var(--border-accent);
+}
+
+.depLabel {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 20px;
+}
+
+.depFlow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+}
+
+.depNode {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  padding: 8px 14px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  color: var(--text-secondary);
+  white-space: nowrap;
+}
+
+.depNodeAlt {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  padding: 8px 14px;
+  background: rgba(79, 143, 247, 0.06);
+  border: 1px solid rgba(79, 143, 247, 0.2);
+  border-radius: 6px;
+  color: var(--accent);
+  white-space: nowrap;
+}
+
+.depNodeWarm {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  padding: 8px 14px;
+  background: rgba(245, 158, 66, 0.08);
+  border: 1px solid rgba(245, 158, 66, 0.25);
+  border-radius: 6px;
+  color: var(--accent-warm);
+  white-space: nowrap;
+  font-weight: 600;
+}
+
+.depArrow {
+  color: var(--text-muted);
+  font-size: 0.8rem;
+}
+
+.depDetail {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+/* ── Phase blocks ── */
+.phaseBlock {
+  border-left: 3px solid var(--accent);
+  padding-left: 24px;
+  margin-bottom: 48px;
+}
+
+.phaseHeader {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.phaseNum {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.phaseName {
+  font-family: var(--font-mono);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.phaseDesc {
+  font-size: 0.92rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: 20px;
+  max-width: 760px;
+}
+
+/* ── Task cards within phases ── */
+.taskGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 12px;
+}
+
+.taskCard {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 24px;
+  position: relative;
+  overflow: hidden;
+  transition: border-color 0.3s, box-shadow 0.3s, transform 0.3s;
+}
+
+.taskCard::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 8px;
+  padding: 1px;
+  background: linear-gradient(135deg, transparent 40%, var(--accent) 100%);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.taskCard:hover::before {
+  opacity: 1;
+}
+
+.taskCard:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(79, 143, 247, 0.06);
+}
+
+.taskCardHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+/* ── Task ID (shared between completed and planned) ── */
+.taskId {
+  font-family: var(--font-mono);
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--accent-dim);
+  line-height: 1;
+}
+
+.taskTitle {
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 8px;
+}
+
+.taskDesc {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.taskMeta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 12px;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.taskDep {
+  color: var(--accent-dim);
+}
+
+/* ── Status badge ── */
+.badge {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 3px 10px;
+  border-radius: 4px;
+  background: rgba(79, 143, 247, 0.1);
+  color: var(--accent);
+  border: 1px solid rgba(79, 143, 247, 0.2);
+}
+
+.badgeBuilt {
+  background: rgba(34, 197, 94, 0.1);
+  color: var(--accent-green, #22c55e);
+  border-color: rgba(34, 197, 94, 0.3);
+}
+
+/* ── CRSIS vision callout (matches Crsis.module.css .whyBox) ── */
+.visionBox {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-accent);
+  border-left: 3px solid var(--accent-warm);
+  border-radius: 8px;
+  padding: 28px;
+  margin: 48px 0;
+}
+
+.visionTitle {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--accent-warm);
+  margin-bottom: 12px;
+}
+
+.visionText {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  margin-bottom: 12px;
+}
+
+.visionText:last-child {
+  margin-bottom: 0;
+}
+
+/* ── Closing quote ── */
+.quoteBox {
+  text-align: center;
+  padding: 40px 24px;
+}
+
+.quoteText {
+  font-family: var(--font-mono);
+  font-size: 1.2rem;
+  color: var(--text-primary);
+  font-weight: 600;
+  font-style: italic;
+}
+
+/* ── Mobile responsive ── */
+@media (max-width: 768px) {
+  .completedGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .completedCard {
+    grid-template-columns: 40px 1fr;
+    gap: 12px;
+  }
+
+  .taskGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .depFlow {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+
+  .depArrow {
+    transform: rotate(90deg);
+    display: inline-block;
+    margin-left: 24px;
+  }
+
+  .statRow {
+    gap: 20px;
+  }
+
+  .phaseBlock {
+    padding-left: 16px;
+  }
+}
+
+/* ── Score Bars ── */
+.scoreRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin: 24px 0 32px;
+}
+
+.scoreCard {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 20px;
+}
+
+.scoreLabel {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 10px;
+}
+
+.scoreBarOuter {
+  height: 8px;
+  background: var(--bg-elevated, #1a1d2e);
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 8px;
+}
+
+.scoreBarInner {
+  height: 100%;
+  background: var(--accent);
+  border-radius: 4px;
+  transition: width 0.6s ease;
+}
+
+.scoreBarInnerWarm {
+  height: 100%;
+  background: var(--accent-warm, #f59e0b);
+  border-radius: 4px;
+  transition: width 0.6s ease;
+}
+
+.scoreValue {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+/* ── Stop Points ── */
+.stopPointRow {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin: 0 0 40px;
+}
+
+.stopPoint {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 16px;
+}
+
+.stopPointId {
+  font-family: var(--font-mono);
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--accent);
+  min-width: 28px;
+  text-align: center;
+}
+
+.stopPointLabel {
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+}
+
+.stopPointDesc {
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  line-height: 1.4;
+}
+
+.stopPointAfter {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  margin-top: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+/* ── Stop Badge on Phase ── */
+.stopBadge {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent-warm, #f59e0b);
+  border: 1px solid var(--accent-warm, #f59e0b);
+  padding: 3px 10px;
+  border-radius: 12px;
+  margin-left: auto;
+}
+
+@media (max-width: 700px) {
+  .scoreRow {
+    grid-template-columns: 1fr;
+  }
+  .stopPointRow {
+    grid-template-columns: 1fr;
+  }
+}

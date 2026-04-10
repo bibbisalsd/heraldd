@@ -1,0 +1,188 @@
+diff --git a/src/app/(site)/layout.tsx b/src/app/(site)/layout.tsx
+index ef5148a..fd2fb31 100644
+--- a/src/app/(site)/layout.tsx
++++ b/src/app/(site)/layout.tsx
+@@ -26,7 +26,7 @@ export default function SiteLayout({
+ }) {
+   return (
+     <div style={{ paddingLeft: "var(--sidebar-padding, 0)" }}>
+-      <style>{`@media (min-width: 901px) { :root { --sidebar-padding: 180px; } }`}</style>
++      <style>{`@media (min-width: 901px) { :root { --sidebar-padding: 164px; } }`}</style>
+       <SmoothScroll />
+       <SiteComponents />
+       <ScrollReveal />
+diff --git a/src/components/Nav.module.css b/src/components/Nav.module.css
+index c77d703..8726c8e 100644
+--- a/src/components/Nav.module.css
++++ b/src/components/Nav.module.css
+@@ -3,12 +3,12 @@
+   position: fixed;
+   top: 0;
+   left: 0;
+-  width: 172px;
++  width: 164px;
+   height: 100vh;
+   z-index: 100;
+   display: flex;
+   flex-direction: column;
+-  padding: 22px 14px;
++  padding: 18px 12px 16px;
+   background: rgba(8, 9, 13, 0.94);
+   backdrop-filter: blur(16px);
+   -webkit-backdrop-filter: blur(16px);
+@@ -17,11 +17,11 @@
+ 
+ .logo {
+   font-family: var(--font-mono);
+-  font-size: 1.4rem;
++  font-size: 1.2rem;
+   font-weight: 700;
+   color: var(--text-primary);
+   text-decoration: none;
+-  margin-bottom: 28px;
++  margin-bottom: 18px;
+   letter-spacing: -0.04em;
+   flex-shrink: 0;
+ }
+@@ -40,9 +40,9 @@
+   display: flex;
+   flex-direction: column;
+   flex: 1;
++  min-height: 0;
+   overflow-y: auto;
+   overflow-x: hidden;
+-  /* hide scrollbar */
+   scrollbar-width: none;
+ }
+ 
+@@ -58,33 +58,30 @@
+ .groupDivider {
+   height: 1px;
+   background: var(--border);
+-  margin: 8px 0;
+-  opacity: 0.6;
++  margin: 5px 4px;
++  opacity: 0.5;
+ }
+ 
++/* Group label hidden by default — uncomment if you want them back */
+ .groupLabel {
+-  font-family: var(--font-mono);
+-  font-size: 0.6rem;
+-  font-weight: 600;
+-  letter-spacing: 0.14em;
+-  text-transform: uppercase;
+-  color: var(--text-muted);
+-  padding: 4px 12px 2px;
+-  user-select: none;
++  display: none;
+ }
+ 
+ .link {
+   position: relative;
+   font-family: var(--font-mono);
+-  font-size: 0.74rem;
++  font-size: 0.71rem;
+   color: var(--text-muted);
+   text-decoration: none;
+-  padding: 6px 12px;
+-  border-radius: 5px;
++  padding: 5px 10px;
++  border-radius: 4px;
+   transition: color 0.15s, background 0.15s;
+   display: flex;
+   align-items: center;
+   gap: 8px;
++  white-space: nowrap;
++  overflow: hidden;
++  text-overflow: ellipsis;
+ }
+ 
+ .link:hover {
+@@ -104,24 +101,25 @@
+   top: 50%;
+   transform: translateY(-50%);
+   width: 2px;
+-  height: 14px;
++  height: 12px;
+   background: var(--accent);
+   border-radius: 0 2px 2px 0;
++  flex-shrink: 0;
+ }
+ 
+ /* ── 3D explore button ── */
+ .exploreBtn {
+   font-family: var(--font-mono);
+-  font-size: 0.7rem;
++  font-size: 0.65rem;
+   font-weight: 700;
+   color: var(--accent);
+   text-decoration: none;
+   text-align: center;
+-  padding: 9px;
++  padding: 7px;
+   border: 1px solid var(--accent-dim);
+-  border-radius: 7px;
++  border-radius: 6px;
+   transition: background 0.2s, transform 0.2s;
+-  margin-top: 12px;
++  margin-top: 10px;
+   flex-shrink: 0;
+   letter-spacing: 0.06em;
+ }
+@@ -219,27 +217,27 @@
+ .mobileDivider {
+   height: 1px;
+   background: var(--border);
+-  margin: 10px 0;
+-  opacity: 0.5;
++  margin: 8px 0;
++  opacity: 0.4;
+ }
+ 
+ .mobileGroupLabel {
+   font-family: var(--font-mono);
+-  font-size: 0.6rem;
++  font-size: 0.58rem;
+   font-weight: 600;
+   letter-spacing: 0.14em;
+   text-transform: uppercase;
+   color: var(--text-muted);
+-  padding: 6px 0 2px;
++  padding: 4px 0 2px;
+ }
+ 
+ .mobileLink {
+   display: block;
+   font-family: var(--font-mono);
+-  font-size: 0.95rem;
++  font-size: 0.9rem;
+   color: var(--text-secondary);
+   text-decoration: none;
+-  padding: 10px 0;
++  padding: 9px 0;
+   border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+   transition: color 0.15s, padding-left 0.15s;
+ }
+@@ -257,10 +255,10 @@
+ .mobileExploreLink {
+   display: block;
+   font-family: var(--font-mono);
+-  font-size: 0.88rem;
++  font-size: 0.85rem;
+   color: var(--accent);
+   text-decoration: none;
+-  padding: 12px 0;
++  padding: 10px 0;
+   transition: opacity 0.15s;
+   margin-top: 4px;
+ }
+@@ -281,7 +279,7 @@
+   }
+ }
+ 
+-/* ── Responsive breakpoints ── */
++/* ── Responsive ── */
+ @media (max-width: 900px) {
+   .sidebar {
+     display: none;

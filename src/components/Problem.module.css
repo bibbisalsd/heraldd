@@ -1,0 +1,74 @@
+.frameworkGrid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 40px 0 48px;
+}
+
+.frameworkChip {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  padding: 6px 14px;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  color: var(--text-muted);
+  background: var(--bg-secondary);
+  transition: border-color 0.2s, color 0.2s;
+}
+
+.frameworkChip:hover {
+  border-color: var(--accent-red);
+  color: var(--text-secondary);
+}
+
+.frameworkChipAll {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  padding: 6px 14px;
+  border: 1px solid var(--accent-red);
+  border-radius: 4px;
+  color: var(--accent-red);
+  background: rgba(239, 68, 68, 0.08);
+}
+
+.costGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 16px;
+  margin-top: 20px;
+}
+
+.costCard {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 24px;
+  position: relative;
+  overflow: hidden;
+  transition: border-color 0.2s;
+}
+
+.costCard:hover {
+  border-color: var(--accent);
+}
+
+.costIcon {
+  font-family: var(--font-mono);
+  font-size: 1.5rem;
+  color: var(--accent-red);
+  margin-bottom: 8px;
+}
+
+.costLabel {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 6px;
+}
+
+.costDesc {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
